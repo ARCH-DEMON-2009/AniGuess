@@ -41,14 +41,9 @@ const sql = DB_HOST
     })
   : null;
 
-console.log("Setting Telegram webhook...");
-await fetch(
-  `${TELEGRAM_API}/bot${TELEGRAM_TOKEN}/setWebhook?url=${TELEGRAM_WEBHOOK}&max_connections=100`,
-)
-  .then((e) => e.json())
-  .then((e) => {
-    console.log(e);
-  });
+console.log("Remember to set your Telegram webhook manually after deploy:");
+console.log(`curl -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/setWebhook" -d "url=${TELEGRAM_WEBHOOK}"`);
+
 
 let botName = "";
 fetch(`${TELEGRAM_API}/bot${TELEGRAM_TOKEN}/getMe`)
